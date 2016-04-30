@@ -6,4 +6,5 @@ install as instruction at https://laravel.com/docs/5.2
 ```
 cd path/to/cms
 php artisan migrate:refresh --seed
+php artisan make:auth
 ```
