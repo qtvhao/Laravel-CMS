@@ -21,7 +21,9 @@ class PostController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index() {
-		$posts = Post::published()->where(\Request::all())->latest()->paginate(5);
+		$clauses = \Request::except('page');
+		$posts = Post::published()->where($clauses)->latest()->paginate(5);
+		$posts = $posts->appends($clauses);
 		return view('posts.list', compact('posts'));
 	}
 
@@ -44,7 +46,7 @@ class PostController extends Controller {
 		$new_post = new Post();
 		$new_post->user_id = Auth::user()->id;
 		$new_post->fill($request->all())->save();
-		return redirect()->route('posts.show', $new_post->id);
+		return redirect()->route('posts.edit', $new_post->id);
 	}
 
 	/**
