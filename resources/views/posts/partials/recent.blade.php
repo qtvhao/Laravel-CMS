@@ -1,5 +1,5 @@
 <?php
-$recent_posts = App\Post::published()->latest()->take(10)->get();
+$recent_posts = App\Post::latest()->take(10)->get();
 if (count($recent_posts) > 0) {
 	echo '<h3>Recent Posts</h3>';
 }

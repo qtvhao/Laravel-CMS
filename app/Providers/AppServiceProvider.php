@@ -11,9 +11,9 @@ class AppServiceProvider extends ServiceProvider {
 	 * @return void
 	 */
 	public function boot() {
-		/*if (app()->environment('local')) {
-			DB::listen(function ($db) {echo '<!--' . $db->sql . '-->';});
-		}*/
+		if (app()->environment('local')) {
+			//DB::listen(function ($db) {echo '<!--' . $db->sql . '-->' . PHP_EOL;});
+		}
 	}
 
 	/**

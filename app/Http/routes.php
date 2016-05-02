@@ -19,3 +19,4 @@ Route::auth();
 
 Route::get('/home', 'HomeController@index');
 Route::resource('posts', 'PostController');
+Route::resource('tags', 'TagController');

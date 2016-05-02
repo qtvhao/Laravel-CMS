@@ -10,11 +10,13 @@ class UsersTableSeeder extends Seeder {
 	 */
 	public function run() {
 		//create admin
-		App\User::create([
+		$admin = App\User::firstOrNew([
 			'name' => 'Administrator',
 			'email' => 'admin@example.com',
-			'password' => bcrypt('123456'),
 		]);
+		$admin->password = bcrypt('123456');
+		$admin->save();
+
 		//create others
 		$faker = Faker\Factory::create();
 		for ($i = 0; $i < 20; $i++) {

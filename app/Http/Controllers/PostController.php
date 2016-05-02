@@ -22,7 +22,7 @@ class PostController extends Controller {
 	 */
 	public function index() {
 		$clauses = \Request::except('page');
-		$posts = Post::published()->where($clauses)->latest()->paginate(5);
+		$posts = Post::where($clauses)->latest()->paginate(5);
 		$posts = $posts->appends($clauses);
 		return view('posts.list', compact('posts'));
 	}
@@ -56,7 +56,7 @@ class PostController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function show($id) {
-		$post = Post::published()->findOrFail($id);
+		$post = Post::findOrFail($id);
 		return view('posts.show', compact('post'));
 	}
 
