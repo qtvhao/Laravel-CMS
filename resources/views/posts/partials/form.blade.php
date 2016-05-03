@@ -51,7 +51,43 @@
 			</label>
 		</div>
 	@endforeach
+	</div>
 </div>
+<div class="form-group">
+	<label for="inputTags" class="col-sm-2 control-label">Tags:</label>
+	<div class="col-sm-10">
+	{{-- list tags selected --}}
+	@if (isset($post))
+		@foreach ($post->tags as $tag)
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" checked name='tags[]' value="{{ $tag->id }}">
+					{{$tag->name}}
+				</label>
+			</div>
+		@endforeach
+	@endif
+		{{-- list tags unselected --}}
+<?php
+//get tags's id which selected
+if (isset($post)) {
+	$tags_id_selected = array_map(function ($tag) {return $tag['id'];}, $post->tags->toArray());
+} else {
+	$tags_id_selected = [];
+}
+
+?>
+		@foreach ($tags as $tag)
+			@if (!in_array($tag->id,$tags_id_selected))
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" name='tags[]' value="{{ $tag->id }}">
+						{{$tag->name}}
+					</label>
+				</div>
+			@endif
+		@endforeach
+	</div>
 </div>
 @if (isset($post))
 <div class="form-group">

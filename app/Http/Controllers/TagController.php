@@ -43,7 +43,7 @@ class TagController extends Controller {
 	 */
 	public function show($id) {
 		$posts = Tag::find($id)->posts();
-		$posts = $posts->latest()->paginate(5);
+		$posts = $posts->latest()->with('tags', 'user')->paginate(5);
 		return view('posts.list', compact('posts'));
 	}
 

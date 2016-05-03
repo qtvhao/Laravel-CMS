@@ -15,9 +15,8 @@ $heading_tag .= $is_in_loop ? "<a rel='bookmark' href='" . route('posts.show', $
 		{{$is_in_loop ? $post->excerpt : $post->content}}
 	</section>
 	<div>Tags:
-			@foreach ($post->tags as $tag)
-				<a href="{{ route('tags.show',$tag->id) }}" title="{{$tag->name}}">{{$tag->name}}</a>
-			@endforeach
+@foreach ($post->tags as $key=>$tag)
+@if ($key>0),@endif <a href="{{ route('tags.show',$tag->id) }}" title="{{$tag->name}}">{{$tag->name}}</a>@endforeach
 	</div>
 @include('posts.partials.buttons')
 </article>

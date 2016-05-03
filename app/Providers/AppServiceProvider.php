@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Providers;
+use App\Post;
 use DB;
 use Illuminate\Support\ServiceProvider;
 
@@ -12,7 +13,8 @@ class AppServiceProvider extends ServiceProvider {
 	 */
 	public function boot() {
 		if (app()->environment('local')) {
-			//DB::listen(function ($db) {echo '<!--' . $db->sql . '-->' . PHP_EOL;});
+			//show sql queries
+			DB::listen(function ($db) {echo '<!--' . $db->sql . '-->' . PHP_EOL;});
 		}
 	}
 

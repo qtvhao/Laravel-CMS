@@ -10,8 +10,8 @@ class TagPostTableSeeder extends Seeder {
 	 */
 	public function run() {
 		$posts = App\Post::withoutGlobalScopes()->get();
+		$tag = App\Tag::orderByRaw('RAND()')->first();
 		foreach ($posts as $post) {
-			$tag = App\Tag::orderByRaw('RAND()')->first();
 			$post->tags()->attach($tag->id);
 		}
 	}

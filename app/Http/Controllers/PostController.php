@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Post;
+use App\Tag;
 use Auth;
 use Gate;
 use Illuminate\Http\Request;
@@ -14,6 +15,9 @@ class PostController extends Controller {
 			'index',
 			'show',
 		]]);
+		view()->composer('posts.partials.form', function ($view) {
+			$view->with('tags', Tag::all());
+		});
 	}
 	/**
 	 * Display a listing of the resource.
@@ -22,8 +26,8 @@ class PostController extends Controller {
 	 */
 	public function index() {
 		$clauses = \Request::except('page');
-		$posts = Post::where($clauses)->latest()->paginate(5);
-		$posts = $posts->appends($clauses);
+		$posts = Post::where($clauses)->latest()->with('tags')->paginate(5);
+		//$posts = $posts->appends($clauses);
 		return view('posts.list', compact('posts'));
 	}
 
@@ -46,6 +50,7 @@ class PostController extends Controller {
 		$new_post = new Post();
 		$new_post->user_id = Auth::user()->id;
 		$new_post->fill($request->all())->save();
+		$new_post->tags()->attach($request->tags);
 		return redirect()->route('posts.edit', $new_post->id);
 	}
 
@@ -80,6 +85,8 @@ class PostController extends Controller {
 	 */
 	public function update(Request $request, $id) {
 		$post = Post::withTrashed()->findOrFail($id);
+		$post->tags()->detach();
+		$post->tags()->attach($request->tags);
 		if (Gate::denies('update-post', $post)) {
 			abort(403);
 		}
