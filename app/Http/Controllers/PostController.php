@@ -26,7 +26,7 @@ class PostController extends Controller {
 	 */
 	public function index() {
 		$clauses = \Request::except('page');
-		$posts = Post::where($clauses)->latest()->with('tags')->paginate(5);
+		$posts = Post::where($clauses)->latest()->with('tags', 'user')->paginate(5);
 		//$posts = $posts->appends($clauses);
 		return view('posts.list', compact('posts'));
 	}
@@ -61,7 +61,7 @@ class PostController extends Controller {
 	 * @return \Illuminate\Http\Response
 	 */
 	public function show($id) {
-		$post = Post::findOrFail($id);
+		$post = Post::with('tags', 'user')->findOrFail($id);
 		return view('posts.show', compact('post'));
 	}
 
