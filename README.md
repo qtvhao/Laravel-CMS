@@ -1,14 +1,12 @@
-# Laravel-CMS
+# CMS - based on Laravel
 ## Installation
-### Install Laravel
-install as instruction at https://laravel.com/docs/5.2
-### Run command line
+	composer create-project qtvhao/Laravel-CMS --prefer-dist
+	composer install --no-dev
+Now, edit .env with your database connection info
 ```
-cd path/to/cms
 php artisan migrate
-php artisan make:auth
 ```
-If you are developer, let seeding posts and users
+and you can seeding example data
 ```
 php artisan db:seed
 ```
