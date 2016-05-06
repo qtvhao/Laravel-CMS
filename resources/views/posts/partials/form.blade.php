@@ -111,3 +111,17 @@ if (isset($post)) {
 	</div>
 </div>
 </form>
+@section('scripts')
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.10.1/simplemde.min.css">
+	<script src='https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.10.1/simplemde.min.js'></script>
+	<script>
+		$(function(){
+			var ContentValue = new SimpleMDE({
+				element: $("#textareaContent")[0],
+				forceSync:true,
+				spellChecker:false,
+			});
+
+		});
+	</script>
+@stop

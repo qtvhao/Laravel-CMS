@@ -3,7 +3,7 @@
 <form action="{{ route('posts.search') }}" method="GET" class="form-inline" role="form">
 	<div class="form-group">
 		<label class="sr-only" for="fieldSearch">Search</label>
-		<input name='q' class="form-control" id="fieldSearch" placeholder="keywords">
+		<input name='q' class="form-control" id="fieldSearch" placeholder="keywords in title or content">
 	</div>
 	<button type="submit" class="btn btn-primary">Search</button>
 </form>
