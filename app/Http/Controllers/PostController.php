@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 class PostController extends Controller {
 	function __construct() {
 		$this->middleware('auth', ['except' => [
+			'search',
 			'index',
 			'show',
 		]]);
@@ -107,5 +108,13 @@ class PostController extends Controller {
 		abort_if(Gate::denies('delete-post', $post), 403);
 		$post->delete();
 		return back();
+	}
+	public function search(Request $request) {
+		$q = $request->q;
+		$posts = Post::latest()
+			->where('title', 'like', '%' . $q . '%')
+			->where('content', 'like', '%' . $q . '%')
+			->with(['tags', 'user'])->paginate(5);
+		return view('posts.list', compact('posts'));
 	}
 }
