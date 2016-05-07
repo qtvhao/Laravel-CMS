@@ -105,7 +105,7 @@ class PostController extends Controller {
 	 */
 	public function destroy($id) {
 		$post = Post::findOrFail($id);
-		abort_if(Gate::denies('delete-post', $post), 403);
+		$this->authorize('edit', $post);
 		$post->delete();
 		return back();
 	}

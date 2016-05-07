@@ -5,7 +5,7 @@
 	<a href='{{ route('posts.create') }}' class="btn btn-default">
 		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
 	</a>
-@can('update-post', $post)
+@can('edit', $post)
     <a href='{{ route('posts.edit', $post->id) }}' class="btn btn-default">
 		<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 	</a>
