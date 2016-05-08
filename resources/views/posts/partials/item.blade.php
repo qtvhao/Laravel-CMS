@@ -24,7 +24,7 @@ $heading_tag .= $is_in_loop ? "<a rel='bookmark' href='" . route('posts.show', $
 			{!!Markdown::convertToHtml($post->content)!!}
 		@endif
 	</section>
-	<div>Tags:
+	<div>Tagged:
 @foreach ($post->tags as $key=>$tag)
 @if ($key>0),@endif <a href="{{ route('tags.show',$tag->id) }}" title="{{$tag->name}}">{{$tag->name}}</a>@endforeach
 	</div>

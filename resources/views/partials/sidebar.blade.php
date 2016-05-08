@@ -9,5 +9,6 @@
 </form>
 <hr>
 @include('posts.partials.recent')
+@include('tags.all')
 <hr>
 GitHub: https://github.com/qtvhao/Laravel-CMS

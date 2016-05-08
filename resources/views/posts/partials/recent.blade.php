@@ -4,10 +4,9 @@ if (count($recent_posts) > 0) {
 	echo '<h3>Recent Posts</h3>';
 }
 ?>
-<ul>
+<style>.tags a{margin:2px;}</style>
+<div class="tags">
 @foreach ($recent_posts as $post)
-	<li>
-		<a href="{{ route('posts.show',$post->id) }}" rel='bookmark'>{{ $post->title }}</a>
-	</li>
+	<a class='btn btn-default' href="{{ route('posts.show',$post->id) }}" rel='bookmark'>{{ $post->title }}</a>
 @endforeach
-</ul>
+</div>
