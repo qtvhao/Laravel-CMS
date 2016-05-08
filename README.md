@@ -2,7 +2,7 @@
 ## Installation
 	composer create-project qtvhao/Laravel-CMS --prefer-dist
 	composer install --no-dev
-Now, edit .env with your database connection info
+Now, edit files in /config directory
 ```
 php artisan migrate
 ```
