@@ -1,7 +1,7 @@
 # CMS - based on Laravel
 ## Installation
 	composer create-project qtvhao/Laravel-CMS --prefer-dist
-	composer install --no-dev
+	composer install --dev
 Now, edit files in /config directory
 ```
 php artisan migrate
