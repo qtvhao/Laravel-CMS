@@ -1,6 +1,6 @@
 # CMS - based on Laravel
 ## Installation
-	composer create-project qtvhao/Laravel-CMS --prefer-dist
+	composer create-project qtvhao/Laravel-CMS --prefer-dist --dev
 	composer install --dev
 Now, edit files in /config directory
 ```
