@@ -17,7 +17,7 @@ class PostsTableSeeder extends Seeder {
 				'user_id' => $admin->id,
 				'title' => $faker->sentence,
 				'content' => implode('', $faker->sentences(5)),
-				'thumbnail_url' => 'http://www.telegraph.co.uk/content/dam/Travel/leadAssets/25/75/sydney_2575346a-large.jpg',
+				'thumbnail_url' => 'https://unsplash.it/700/300?image='.$i,
 				'status' => rand(1, 2),
 			]);
 		}

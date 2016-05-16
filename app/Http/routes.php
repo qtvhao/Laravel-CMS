@@ -24,3 +24,7 @@ Route::get('posts/search', [
 Route::resource('posts', 'PostController');
 Route::get('/home', 'HomeController@index');
 Route::resource('tags', 'TagController');
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');

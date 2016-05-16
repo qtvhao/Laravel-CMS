@@ -88,7 +88,7 @@ class PostController extends Controller {
 		$post = Post::withTrashed()->findOrFail($id);
 		$post->tags()->detach();
 		$post->tags()->attach($request->tags);
-		abort_unless($request->user()->can('edit'), 403, 'Bạn không có quyền sửa bài viết này');
+		abort_unless($request->user()->can('edit',$post), 403, 'Bạn không có quyền sửa bài viết này');
 		$post->update($request->all());
 		if ($request->restore) {
 			$post->restore();
